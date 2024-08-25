@@ -8,19 +8,24 @@ router.get('/blogs', async (req, res) => {
         const limit = 10; 
         const skip = (page - 1) * limit;
     
-        const blogs = await Blog.find().skip(skip).limit(limit);
+        // Sort by createdAt in descending order
+        const blogs = await Blog.find()
+            .sort({ createdAt: -1 }) // -1 for descending order
+            .skip(skip)
+            .limit(limit);
+
         const totalBlogs = await Blog.countDocuments(); // Get total number of blogs
         const totalPages = Math.ceil(totalBlogs / limit); // Calculate total pages
     
         res.json({
-          totalBlogs,
-          totalPages,
-          currentPage: page,
-          blogs
+            totalBlogs,
+            totalPages,
+            currentPage: page,
+            blogs
         });
-      } catch (err) {
+    } catch (err) {
         res.status(500).json({ error: 'Failed to fetch blogs' });
-      }
+    }
 });
 
 module.exports = router;
