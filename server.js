@@ -6,7 +6,7 @@ const app = express();
 // Enable CORS for all routes
 app.use(cors());
 
-const PORT = 3000;
+const PORT = 8080;
 
 mongoose.connect('mongodb+srv://as0846403:8dcmRgx8rQxzFlOb@cluster0.ieqxa.mongodb.net/blogs-db?retryWrites=true&w=majority', {});
 

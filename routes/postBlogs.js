@@ -18,8 +18,10 @@ router.post('/blogs', async (req, res) => {
 
   try {
     const savedBlog = await newBlog.save();
+    console.log(savedBlog);
     res.status(201).json(savedBlog);
   } catch (err) {
+    console.log(err)
     res.status(500).json({ error: err});
   }
 });
