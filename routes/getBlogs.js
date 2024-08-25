@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const Blog = require('../models/blogSchema'); // Ensure this path is correct
+const Blog = require('../models/blogSchema'); 
 
 router.get('/blogs', async (req, res) => {
     try {
-        const page = parseInt(req.query.page) || 1; // Default to page 1 if not provided
-        const limit = 10; // Default to 10 items per page if not provided
+        const page = parseInt(req.query.page) || 1; 
+        const limit = 10; 
         const skip = (page - 1) * limit;
     
         const blogs = await Blog.find().skip(skip).limit(limit);

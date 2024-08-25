@@ -6,9 +6,7 @@ router.post('/blogs', async (req, res) => {
     const { Heading, coverImg, blogDetail } = req.body;
 
   // Basic validation
-  if (!Heading || !coverImg || !Array.isArray(blogDetail)) {
-    return res.status(400).json({ error: 'Invalid data format' });
-  }
+
 
   const newBlog = new Blog({
     Heading,
